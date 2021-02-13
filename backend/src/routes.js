@@ -15,5 +15,6 @@ routes.post("/sessions", SessionsController.create);
 routes.use(ensureAuthenticated);
 
 routes.post("/neighborhoods", NeighborhoodsController.create);
+routes.get("/neighborhoods", NeighborhoodsController.index);
 
 module.exports = routes;

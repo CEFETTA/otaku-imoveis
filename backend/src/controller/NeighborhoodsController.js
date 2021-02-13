@@ -2,6 +2,13 @@ const connection = require("../database/connection");
 const uuid = require("uuid");
 
 module.exports = {
+  async index(request, response) {
+    const findNeighborhoods = await connection("neighborhoods")
+      .select(['id', 'neighborhood']);
+
+    return response.json(findNeighborhoods);
+  },
+
   async create(request, response) {
     const { neighborhood } = request.body;
 
