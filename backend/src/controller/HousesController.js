@@ -49,7 +49,7 @@ module.exports = {
       cep,
     } = request.body;
 
-    const { neighborhood } = await connection("neighborhoods")
+    const neighborhood = await connection("neighborhoods")
       .where("id", neighborhood_id)
       .select("neighborhood")
       .first();
@@ -99,7 +99,7 @@ module.exports = {
       city,
       state,
       cep,
-      neighborhood,
+      neighborhood: neighborhood.neighborhood,
     });
   },
 
