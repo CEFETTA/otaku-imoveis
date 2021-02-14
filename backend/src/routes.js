@@ -5,6 +5,7 @@ const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
 const UsersController = require("./controller/UsersController");
 const SessionsController = require("./controller/SessionsController");
 const NeighborhoodsController = require("./controller/NeighborhoodsController");
+const HousesController = require("./controller/HousesController");
 
 const routes = express.Router();
 
@@ -16,5 +17,7 @@ routes.use(ensureAuthenticated);
 
 routes.post("/neighborhoods", NeighborhoodsController.create);
 routes.get("/neighborhoods", NeighborhoodsController.index);
+
+routes.post("/houses", HousesController.create);
 
 module.exports = routes;
