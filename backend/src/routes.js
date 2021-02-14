@@ -17,6 +17,7 @@ routes.use(ensureAuthenticated);
 
 routes.post("/neighborhoods", NeighborhoodsController.create);
 routes.get("/neighborhoods", NeighborhoodsController.index);
+routes.delete("/neighborhoods/:neighborhood_id", NeighborhoodsController.delete);
 
 routes.post("/houses", HousesController.create);
 routes.get("/houses/:house_id", HousesController.show);

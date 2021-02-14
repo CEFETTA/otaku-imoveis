@@ -12,6 +12,17 @@ module.exports = {
   async create(request, response) {
     const { neighborhood } = request.body;
 
+    const user_id = request.user.id;
+
+    const user = await connection("users")
+      .where("id", user_id)
+      .select()
+      .first();
+
+    if (user.role !== 'admin') {
+      return response.status(401).json({ message: 'Only admins can create neighborhoods' });
+    }
+
     const findNeighborhood = await connection("neighborhoods")
       .where("neighborhood", neighborhood)
       .select("neighborhood")
@@ -32,5 +43,30 @@ module.exports = {
       id,
       neighborhood,
     });
-  }
+  },
+
+  async delete(request, response) {
+    const { neighborhood_id } = request.params;
+
+    const user_id = request.user.id;
+
+    const user = await connection("users")
+      .where("id", user_id)
+      .select()
+      .first();
+
+    if (user.role !== 'admin') {
+      return response.status(401).json({ message: 'Only admins can delete neighborhoods' });
+    }
+
+    const hasDeletedNeighborhood = await connection("neighborhoods")
+      .where("id", neighborhood_id)
+      .del();
+
+    if (!hasDeletedNeighborhood) {
+      return response.status(400).json({ message: 'Neighborhood not found' });
+    }
+
+    return response.json({ message: 'Neighborhood deleted'});
+  },
 };

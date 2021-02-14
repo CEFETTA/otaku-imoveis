@@ -1,5 +1,4 @@
 const connection = require("../database/connection");
-const hashProvider = require("../providers/BCryptHashProvider");
 const uuid = require("uuid");
 
 module.exports = {
