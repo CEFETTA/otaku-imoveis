@@ -100,4 +100,20 @@ module.exports = {
     });
   },
 
+  async delete(request, response) {
+    const { house_id } = request.params;
+
+    const user_id = request.user.id;
+
+    const hasDeletedHouse = await connection("houses")
+      .where("id", house_id)
+      .where("user_id", user_id)
+      .del();
+
+    if (!hasDeletedHouse) {
+      return response.status(400).json({ message: 'House not found on your account' });
+    }
+
+    return response.json({ message: 'Neighborhood deleted'});
+  },
 };
