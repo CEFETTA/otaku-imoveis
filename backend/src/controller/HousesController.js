@@ -4,7 +4,9 @@ const uuid = require("uuid");
 
 module.exports = {
   async index(request, response) {
-    const houses = await connection("houses").select();
+    const houses = await connection("houses")
+      .join("neighborhoods", "neighborhoods.id", "=", "houses.neighborhood_id")
+      .select();
 
     if (!houses) {
       return response.status(400).json({ message: 'Houses not found' });
@@ -17,7 +19,8 @@ module.exports = {
     const { house_id } = request.params;
 
     const house = await connection("houses")
-      .where("id", house_id)
+      .where("houses.id", house_id)
+      .join("neighborhoods", "neighborhoods.id", "=", "houses.neighborhood_id")
       .select()
       .first();
 
@@ -47,12 +50,12 @@ module.exports = {
       cep,
     } = request.body;
 
-    const findNeighborhood = await connection("neighborhoods")
+    const { neighborhood } = await connection("neighborhoods")
       .where("id", neighborhood_id)
       .select("neighborhood")
       .first();
 
-    if (!findNeighborhood) {
+    if (!neighborhood) {
       return response.status(400).json({ message: 'Neighborhood not found' });
     }
 
@@ -97,6 +100,7 @@ module.exports = {
       city,
       state,
       cep,
+      neighborhood,
     });
   },
 
