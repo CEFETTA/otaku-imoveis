@@ -3,31 +3,31 @@ const uuid = require("uuid");
 
 module.exports = {
   async index(request, response) {
-    const houses = await connection("houses")
-      .join("neighborhoods", "neighborhoods.id", "=", "houses.neighborhood_id")
+    const apartments = await connection("apartments")
+      .join("neighborhoods", "neighborhoods.id", "=", "apartments.neighborhood_id")
       .select();
 
-    if (!houses) {
-      return response.status(400).json({ message: 'Houses not found' });
+    if (!apartments) {
+      return response.status(400).json({ message: "Apartment not found" });
     }
 
-    return response.json(houses);
+    return response.json(apartments);
   },
 
   async show(request, response) {
-    const { house_id } = request.params;
+    const { apartment_id } = request.params;
 
-    const house = await connection("houses")
-      .where("houses.id", house_id)
-      .join("neighborhoods", "neighborhoods.id", "=", "houses.neighborhood_id")
+    const apartment = await connection("apartments")
+      .where("apartments.id", apartment_id)
+      .join("neighborhoods", "neighborhoods.id", "=", "apartments.neighborhood_id")
       .select()
       .first();
 
-    if (!house) {
-      return response.status(400).json({ message: 'House not found' });
+    if (!apartment) {
+      return response.status(400).json({ message: "Apartment not found" });
     }
 
-    return response.json(house);
+    return response.json(apartment);
   },
 
   async create(request, response) {
@@ -35,10 +35,14 @@ module.exports = {
       rooms,
       suites,
       living_rooms,
+      dining_rooms,
       parking_spaces,
       area,
       has_wardrobe,
       description,
+      floor,
+      has_24h_concierge,
+      condominium_price,
       rental_price,
       address,
       number,
@@ -55,23 +59,27 @@ module.exports = {
       .first();
 
     if (!neighborhood) {
-      return response.status(400).json({ message: 'Neighborhood not found' });
+      return response.status(400).json({ message: "Neighborhood not found" });
     }
 
     const id = uuid.v4();
 
     const user_id = request.user.id;
 
-    await connection("houses").insert({
+    await connection("apartments").insert({
       id,
       user_id,
       rooms,
       suites,
       living_rooms,
+      dining_rooms,
       parking_spaces,
       area,
       has_wardrobe,
       description,
+      floor,
+      has_24h_concierge,
+      condominium_price,
       rental_price,
       address,
       number,
@@ -87,10 +95,14 @@ module.exports = {
       rooms,
       suites,
       living_rooms,
+      dining_rooms,
       parking_spaces,
       area,
       has_wardrobe,
       description,
+      floor,
+      has_24h_concierge,
+      condominium_price,
       rental_price,
       address,
       number,
@@ -104,19 +116,19 @@ module.exports = {
   },
 
   async delete(request, response) {
-    const { house_id } = request.params;
+    const { apartment_id } = request.params;
 
     const user_id = request.user.id;
 
-    const hasDeletedHouse = await connection("houses")
-      .where("id", house_id)
+    const hasDeletedApartment = await connection("apartments")
+      .where("id", apartment_id)
       .where("user_id", user_id)
       .del();
 
-    if (!hasDeletedHouse) {
-      return response.status(400).json({ message: 'House not found on your account' });
+    if (!hasDeletedApartment) {
+      return response.status(400).json({ message: "Apartment not found on your account" });
     }
 
-    return response.json({ message: 'House deleted'});
+    return response.json({ message: "Apartment deleted"});
   },
 };
