@@ -19,5 +19,6 @@ routes.post("/neighborhoods", NeighborhoodsController.create);
 routes.get("/neighborhoods", NeighborhoodsController.index);
 
 routes.post("/houses", HousesController.create);
+routes.get("/houses/:house_id", HousesController.show);
 
 module.exports = routes;
