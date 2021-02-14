@@ -3,6 +3,16 @@ const hashProvider = require("../providers/BCryptHashProvider");
 const uuid = require("uuid");
 
 module.exports = {
+  async index(request, response) {
+    const houses = await connection("houses").select();
+
+    if (!houses) {
+      return response.status(400).json({ message: 'Houses not found' });
+    }
+
+    return response.json(houses);
+  },
+
   async show(request, response) {
     const { house_id } = request.params;
 

@@ -20,5 +20,6 @@ routes.get("/neighborhoods", NeighborhoodsController.index);
 
 routes.post("/houses", HousesController.create);
 routes.get("/houses/:house_id", HousesController.show);
+routes.get("/houses", HousesController.index);
 
 module.exports = routes;

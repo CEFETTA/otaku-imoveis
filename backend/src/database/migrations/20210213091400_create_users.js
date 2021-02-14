@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.string("email").notNullable();
     table.string("password").notNullable();
     table.string("role").notNullable();
+    table.timestamp('created_at').defaultTo(knex.fn.now())
   });
 };
 
