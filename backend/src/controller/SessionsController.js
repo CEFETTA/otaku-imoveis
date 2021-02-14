@@ -14,7 +14,7 @@ module.exports = {
       .first();
 
     if (!user) {
-      return response.status(401).json({ message: 'Incorrect email' });
+      return response.status(401).json({ message: "Incorrect email" });
     }
 
     const passwordMatched = await hashProvider.compareHash(
@@ -23,7 +23,7 @@ module.exports = {
     );
 
     if (!passwordMatched) {
-      return response.status(401).json({ message: 'Incorrect password' });
+      return response.status(401).json({ message: "Incorrect password" });
     }
 
     const { secret, expiresIn } = authConfig.default.jwt;

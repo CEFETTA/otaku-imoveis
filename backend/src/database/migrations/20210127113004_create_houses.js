@@ -19,7 +19,7 @@ exports.up = function(knex) {
     table.string("city").notNullable();
     table.string("state").notNullable();
     table.string("cep").notNullable();
-    table.timestamp('created_at').defaultTo(knex.fn.now())
+    table.timestamp("created_at").defaultTo(knex.fn.now())
 
     table.foreign("user_id").references("id").inTable("users");
     table.foreign("neighborhood_id").references("id").inTable("neighborhoods");

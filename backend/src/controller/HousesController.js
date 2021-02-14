@@ -8,7 +8,7 @@ module.exports = {
       .select();
 
     if (!houses) {
-      return response.status(400).json({ message: 'Houses not found' });
+      return response.status(400).json({ message: "Houses not found" });
     }
 
     return response.json(houses);
@@ -24,7 +24,7 @@ module.exports = {
       .first();
 
     if (!house) {
-      return response.status(400).json({ message: 'House not found' });
+      return response.status(400).json({ message: "House not found" });
     }
 
     return response.json(house);
@@ -55,7 +55,7 @@ module.exports = {
       .first();
 
     if (!neighborhood) {
-      return response.status(400).json({ message: 'Neighborhood not found' });
+      return response.status(400).json({ message: "Neighborhood not found" });
     }
 
     const id = uuid.v4();
@@ -114,9 +114,9 @@ module.exports = {
       .del();
 
     if (!hasDeletedHouse) {
-      return response.status(400).json({ message: 'House not found on your account' });
+      return response.status(400).json({ message: "House not found on your account" });
     }
 
-    return response.json({ message: 'House deleted'});
+    return response.json({ message: "House deleted"});
   },
 };

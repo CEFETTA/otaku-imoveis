@@ -4,7 +4,7 @@ const uuid = require("uuid");
 module.exports = {
   async index(request, response) {
     const findNeighborhoods = await connection("neighborhoods")
-      .select(['id', 'neighborhood']);
+      .select(["id", "neighborhood"]);
 
     return response.json(findNeighborhoods);
   },
@@ -19,8 +19,8 @@ module.exports = {
       .select()
       .first();
 
-    if (user.role !== 'admin') {
-      return response.status(401).json({ message: 'Only admins can create neighborhoods' });
+    if (user.role !== "admin") {
+      return response.status(401).json({ message: "Only admins can create neighborhoods" });
     }
 
     const findNeighborhood = await connection("neighborhoods")
@@ -29,7 +29,7 @@ module.exports = {
       .first();
 
     if (findNeighborhood) {
-      return response.status(400).json({ message: 'This neighborhood already exists' });
+      return response.status(400).json({ message: "This neighborhood already exists" });
     }
 
     const id = uuid.v4();
@@ -55,8 +55,8 @@ module.exports = {
       .select()
       .first();
 
-    if (user.role !== 'admin') {
-      return response.status(401).json({ message: 'Only admins can delete neighborhoods' });
+    if (user.role !== "admin") {
+      return response.status(401).json({ message: "Only admins can delete neighborhoods" });
     }
 
     const hasDeletedNeighborhood = await connection("neighborhoods")
@@ -64,9 +64,9 @@ module.exports = {
       .del();
 
     if (!hasDeletedNeighborhood) {
-      return response.status(400).json({ message: 'Neighborhood not found' });
+      return response.status(400).json({ message: "Neighborhood not found" });
     }
 
-    return response.json({ message: 'Neighborhood deleted'});
+    return response.json({ message: "Neighborhood deleted"});
   },
 };

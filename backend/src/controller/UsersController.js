@@ -13,7 +13,7 @@ module.exports = {
       .first();
 
     if (findUser) {
-      return response.status(400).json({ message: 'This email is already registered' });
+      return response.status(400).json({ message: "This email is already registered" });
     }
 
     const id = uuid.v4();
