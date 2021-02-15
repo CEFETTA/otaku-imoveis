@@ -2,7 +2,7 @@
 
 ## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/) and [yarn](https://yarnpkg.com/) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
@@ -22,7 +22,7 @@ $ npx knex seed:run
 $ yarn dev
 ```
 
-The seeds will add a admin user to create neighborhoods
+The seeds will add an admin user to create neighborhoods
 
 ```json
 {
@@ -33,4 +33,6 @@ The seeds will add a admin user to create neighborhoods
 
 ## :memo: Docs
 
-You can access the docs [here]()
+You can access the docs [here](https://quartel-imoveis.netlify.app/)
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Otaku%20Imoveis&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fthiagodff%2FDocs-Otaku-Imoveis%2Fmain%2Finsomnia.json)
