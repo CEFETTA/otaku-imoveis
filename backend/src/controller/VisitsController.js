@@ -2,6 +2,41 @@ const connection = require("../database/connection");
 const uuid = require("uuid");
 
 module.exports = {
+  async index(request, response) {
+    const visits = await connection("visits")
+      .select();
+
+    if (!visits) {
+      return response.status(400).json({ message: "Visits not found" });
+    }
+
+    const joinVisits = await Promise.all(visits.map(async visit => {
+      if (visit.apartment_id) {
+        const apartment = await connection("apartments")
+        .where("apartments.id", visit.apartment_id)
+        .join("neighborhoods", "neighborhoods.id", "=", "apartments.neighborhood_id")
+        .select()
+        .first();
+
+        return { ...visit, apartment }
+      }
+
+      if (visit.house_id) {
+        const house = await connection("houses")
+          .where("houses.id", visit.house_id)
+          .join("neighborhoods", "neighborhoods.id", "=", "houses.neighborhood_id")
+          .select()
+          .first();
+
+        return { ...visit, house }
+      }
+
+      return visit;
+    }));
+
+    return response.json(joinVisits);
+  },
+
   async create(request, response) {
     const { house_id, apartment_id, scheduled_to } = request.body;
 

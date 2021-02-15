@@ -32,7 +32,7 @@ routes.get("/apartments", ApartmentsController.index);
 routes.delete("/apartments/:apartment_id", ApartmentsController.delete);
 
 routes.post("/visits", VisitsController.create);
-// routes.get("/visits", VisitsController.index);
+routes.get("/visits", VisitsController.index);
 // routes.delete("/visits/:visit_id", VisitsController.delete);
 
 module.exports = routes;
