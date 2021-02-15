@@ -7,6 +7,7 @@ const SessionsController = require("./controller/SessionsController");
 const NeighborhoodsController = require("./controller/NeighborhoodsController");
 const HousesController = require("./controller/HousesController");
 const ApartmentsController = require("./controller/ApartmentsController");
+const VisitsController = require("./controller/VisitsController");
 
 const routes = express.Router();
 
@@ -29,5 +30,9 @@ routes.post("/apartments", ApartmentsController.create);
 routes.get("/apartments/:apartment_id", ApartmentsController.show);
 routes.get("/apartments", ApartmentsController.index);
 routes.delete("/apartments/:apartment_id", ApartmentsController.delete);
+
+routes.post("/visits", VisitsController.create);
+// routes.get("/visits", VisitsController.index);
+// routes.delete("/visits/:visit_id", VisitsController.delete);
 
 module.exports = routes;

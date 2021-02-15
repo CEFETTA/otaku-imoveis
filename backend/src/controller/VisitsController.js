@@ -1,0 +1,55 @@
+const connection = require("../database/connection");
+const uuid = require("uuid");
+
+module.exports = {
+  async create(request, response) {
+    const { house_id, apartment_id, scheduled_to } = request.body;
+
+    if (!house_id && !apartment_id || house_id && apartment_id) {
+      return response.status(400).json({
+        message: "You need to inform house_id or apartment_id"
+      });
+    }
+
+    if (house_id) {
+      const house = await connection("houses")
+        .where("id", house_id)
+        .select()
+        .first();
+
+      if (!house) {
+        return response.status(400).json({ message: "House not found" });
+      }
+    }
+
+    if (apartment_id) {
+      const apartment = await connection("apartments")
+        .where("id", apartment_id)
+        .select()
+        .first();
+
+      if (!apartment) {
+        return response.status(400).json({ message: "Apartment not found" });
+      }
+    }
+
+    const id = uuid.v4();
+    const user_id = request.user.id;
+
+    await connection("visits").insert({
+      id,
+      user_id,
+      house_id,
+      apartment_id,
+      scheduled_to,
+    });
+
+    return response.json({
+      id,
+      user_id,
+      house_id,
+      apartment_id,
+      scheduled_to,
+    });
+  }
+};

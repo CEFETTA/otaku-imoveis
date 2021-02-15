@@ -19,7 +19,7 @@ module.exports = {
       .select()
       .first();
 
-    if (user.role !== "admin") {
+    if (user && user.role !== "admin") {
       return response.status(401).json({ message: "Only admins can create neighborhoods" });
     }
 
