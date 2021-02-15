@@ -18,6 +18,7 @@ module.exports = {
         .select()
         .first();
 
+        delete apartment.id;
         return { ...visit, apartment }
       }
 
@@ -28,6 +29,7 @@ module.exports = {
           .select()
           .first();
 
+        delete house.id;
         return { ...visit, house }
       }
 
