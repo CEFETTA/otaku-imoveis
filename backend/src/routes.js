@@ -33,6 +33,6 @@ routes.delete("/apartments/:apartment_id", ApartmentsController.delete);
 
 routes.post("/visits", VisitsController.create);
 routes.get("/visits", VisitsController.index);
-// routes.delete("/visits/:visit_id", VisitsController.delete);
+routes.delete("/visits/:visit_id", VisitsController.delete);
 
 module.exports = routes;

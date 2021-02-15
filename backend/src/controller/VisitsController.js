@@ -86,5 +86,24 @@ module.exports = {
       apartment_id,
       scheduled_to,
     });
+  },
+
+  async delete(request, response) {
+    const { visit_id } = request.params;
+
+    const user_id = request.user.id;
+
+    const hasDeletedVisit = await connection("visits")
+      .where("id", visit_id)
+      .where("user_id", user_id)
+      .del();
+
+    if (!hasDeletedVisit) {
+      return response.status(400).json({
+        message: "Visit not found"
+      });
+    }
+
+    return response.json({ message: "Visit deleted"});
   }
 };
