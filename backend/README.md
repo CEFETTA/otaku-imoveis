@@ -14,8 +14,21 @@ $ cd otaku-imoveis/backend
 # Install dependencies
 $ yarn install
 
+# Run migrations and seeds
+$ npx knex migrate:latest
+$ npx knex seed:run
+
 # Start the app
 $ yarn dev
+```
+
+The seeds will add a admin user to create neighborhoods
+
+```json
+{
+  "email": "admin@admin.com",
+  "password": "admin"
+}
 ```
 
 ## :memo: Docs
