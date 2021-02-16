@@ -1,42 +1,22 @@
 <template>
-    <section class="section section-shaped section-lg my-0">
-        <div class="shape shape-style-1 bg-gradient-default">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+    <section class="section section-xl my-0 section-background-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl col-xl col-md col-sm"><span></span></div>
+                <div class="col-xl col-xl col-md col-sm text-center">
+                    <img class="section-div-img" src="../assets/images/logo.svg">
+                </div>
+                <div class="col-xl col-xl col-md col-sm"><span></span></div>
+            </div>
         </div>
-        <div class="container pt-lg-md">
+        <div class="container pt-xl-md mt-4">
             <div class="row justify-content-center">
-                <div class="col-lg-5">
+                <div class="col-xl-5">
                     <card type="secondary" shadow
                           header-classes="bg-white pb-5"
-                          body-classes="px-lg-5 py-lg-5"
+                          body-classes="px-xl-5 py-xl-5"
                           class="border-0">
                         <template>
-                            <div class="text-muted text-center mb-3">
-                                <small>Sign in with</small>
-                            </div>
-                            <div class="btn-wrapper text-center">
-                                <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/github.svg">
-                                    Github
-                                </base-button>
-
-                                <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/google.svg">
-                                    Google
-                                </base-button>
-                            </div>
-                        </template>
-                        <template>
-                            <div class="text-center text-muted mb-4">
-                                <small>Or sign in with credentials</small>
-                            </div>
                             <form role="form">
                                 <base-input alternative
                                             class="mb-3"
@@ -48,27 +28,12 @@
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
                                 </base-input>
-                                <base-checkbox>
-                                    Remember me
-                                </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Sign In</base-button>
+                                    <base-button type="primary" class="my-4">Sign in</base-button>
                                 </div>
                             </form>
                         </template>
                     </card>
-                    <div class="row mt-3">
-                        <div class="col-6">
-                            <a href="#" class="text-light">
-                                <small>Forgot password?</small>
-                            </a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <a href="#" class="text-light">
-                                <small>Create new account</small>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -78,4 +43,14 @@
 export default {};
 </script>
 <style>
+    .section-background-img {
+        background-image: url(../assets/images/background.png);
+    }
+
+    .section-div-img {
+        max-width: 247px;
+        max-height: 341px;
+        width: auto;
+        height: auto;
+    }
 </style>
