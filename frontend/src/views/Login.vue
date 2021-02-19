@@ -27,7 +27,7 @@
   </section>
 </template>
 <script>
-import LoginForm from "./components/LoginForm/LoginForm.vue";
+import LoginForm from "./components/SessionForms/LoginForm.vue";
 export default {
   components: { LoginForm },
 };
