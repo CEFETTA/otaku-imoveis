@@ -1,18 +1,27 @@
 <template>
     <div>
         <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#" target="_blank"><img src="../assets/images/logo-nav.svg"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#" target="_blank">Home</a>
-                <a class="nav-item nav-link active" href="#/register">Anunciar<span class="sr-only">(current)</span></a>
+        <base-nav 
+            :key="menu.type"
+            :type="menu.type"
+            effect="dark"
+            expand
+            title="Otaku Andar"
+            :content-id="`navbar-${menu.type}`">
+            <div class="row" slot="content-header" slot-scope="{closeMenu}">
+                <div class="col-6 collapse-brand">
+                    <a href="#">
+                        <img src="../assets/images/logo-nav-toggle.svg">
+                    </a>
+                </div>
+                <div class="col-6 collapse-close">
+                    <close-button @click="closeMenu" :target="`navbar-${menu.type}`">
+
+                    </close-button>
+                </div>
             </div>
-            </div>
-        </nav>
+            <component :is="menu.menuComponent"></component>
+        </base-nav>
         <!-- Registro -->
         <section class="section section-xl my-0 section-background-img">
             <div class="container ct-exemple-row">
@@ -56,7 +65,24 @@
     </div>
 </template>
 <script>
-export default {};
+import Menu2 from "./components/Navigation/Menu2";
+import BaseNav from "@/components/BaseNav";
+import CloseButton from "@/components/CloseButton";
+
+export default {
+    components: {
+        Menu2,
+        BaseNav,
+        CloseButton
+    },
+    data() {
+        return {
+            menu: {
+                type: "default", menuComponent: Menu2
+            }
+        }
+    }
+};
 </script>
 <style>
     .section-background-img {

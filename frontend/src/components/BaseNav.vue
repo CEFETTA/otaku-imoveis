@@ -11,7 +11,7 @@
             <slot name="container-pre"></slot>
             <slot name="brand">
                 <a class="navbar-brand" href="#" @click.prevent="onTitleClick">
-                    {{title}}
+                    <img src="../assets/images/logo-nav.svg">
                 </a>
             </slot>
             <navbar-toggle-button :toggled="toggled"
