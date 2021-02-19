@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import RentCard from "./components/RentCard.vue";
+import RentCard from "./components/RentComparison/RentCard";
 
 export default {
   name: "components",
