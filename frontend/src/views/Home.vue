@@ -34,11 +34,14 @@
                 the bulk of the card's content.
               </p>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <div class="badge-row row">
+              <div class="col-sm" style="flex-grow: 0;">
+                <span class="col-sm badge badge-primary">4 Quartos</span>
+              </div>
+              <div class="col-sm" style="flex-grow: 0;">
+                <span class="col-sm badge badge-primary">Aceita Animais</span>
+              </div>
+            </div>
             <div class="card-body row">
               <div class="p-3">
                 <p class="col-sm h6">R$ 1.000,00</p>
