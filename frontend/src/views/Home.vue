@@ -24,173 +24,9 @@
       style="max-width: 100%; heigth: auto;"
     >
       <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <div class="badge-row row">
-              <div class="col-sm" style="flex-grow: 0;">
-                <span class="col-sm badge badge-primary">4 Quartos</span>
-              </div>
-              <div class="col-sm" style="flex-grow: 0;">
-                <span class="col-sm badge badge-primary">Aceita Animais</span>
-              </div>
-            </div>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col card-border p-3 m-3">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../assets/images/logo.svg" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body row">
-              <div class="p-3">
-                <p class="col-sm h6">R$ 1.000,00</p>
-              </div>
-              <div>
-                <button type="button" class="btn btn-primary col-sm">
-                  Alugar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <rent-card></rent-card>
+        <rent-card></rent-card>
+        <rent-card></rent-card>
       </div>
     </div>
     <!-- Paginação -->
@@ -221,10 +57,15 @@
     </div>
   </div>
 </template>
+
 <script>
+import RentCard from "./components/RentCard.vue";
+
 export default {
   name: "components",
-  components: {},
+  components: {
+    RentCard,
+  },
 };
 </script>
 
@@ -239,10 +80,5 @@ export default {
   max-height: 341px;
   width: auto;
   height: auto;
-}
-
-.card-border {
-  box-shadow: 9px 11px 36px rgba(0, 0, 0, 0.21);
-  border-radius: 6px;
 }
 </style>
