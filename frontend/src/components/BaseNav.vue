@@ -10,7 +10,7 @@
         <div class="container">
             <slot name="container-pre"></slot>
             <slot name="brand">
-                <a class="navbar-brand" href="#" @click.prevent="onTitleClick">
+                <a class="navbar-brand" href="./#" @click.prevent="onTitleClick">
                     <img src="../assets/images/logo-nav.svg">
                 </a>
             </slot>
@@ -86,6 +86,7 @@ export default {
   methods: {
     onTitleClick(evt) {
       this.$emit("title-click", evt);
+      document.location.href = '/#';
     },
     closeMenu() {
       this.toggled = false;
