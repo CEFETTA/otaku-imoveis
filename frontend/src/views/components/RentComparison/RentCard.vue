@@ -21,57 +21,23 @@
           <p class="col-sm h6">R$ {{ price.toFixed(2) }}</p>
         </div>
         <div>
-          <base-button block type="primary" class=" mb-3" @click="modals.modal = true">
-                Alugar
+          <base-button
+            block
+            type="primary"
+            class=" mb-3"
+            v-on:click="selected = true"
+          >
+            Alugar
           </base-button>
-          <modal :show.sync="modals.modal">
-            <p class="h6" slot="header" id="modal-title-default">Agendar</p>
-
-            
-            <div class="row">
-              <div class="col-sm">
-                <img class="mw-100" src="../../../assets/images/logo.svg">
-              </div>
-              <div class="col-sm">
-                <div class="d-block">
-                  <p class="h4 text-center">Seu próximo dojô está aqui!</p>
-                </div>
-                <div class="d-block">
-                  <div class="row d-flex">
-                    <div class="col-sm m-2">
-
-                        <base-input alternative
-                                    class="mb-3"
-                                    placeholder="seu e-mail"
-                                    addon-left-icon="ni ni-email-83">
-                        </base-input>
-
-                        <base-input alternative
-                                    class="mb-3"
-                                    placeholder="seu nome"
-                                    addon-left-icon="ni ni-circle-08">
-                        </base-input>
-
-                        <base-input addon-left-icon="ni ni-calendar-grid-58">
-                            <flat-picker slot-scope="{focus, blur}"
-                                          placeholder="Selecione uma data"
-                                          @on-open="focus"
-                                          @on-close="blur"
-                                          :config="{allowInput: true}"
-                                          class="form-control datepicker"
-                                          v-model="dates.simple"
-                                          >
-                            </flat-picker>
-                        </base-input>
-
-                        <div class="text-right" >
-                          <base-button type="primary">Agendar visita</base-button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <modal :show.sync="selected">
+            <button
+              class="close"
+              v-on:click="selected = false"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <rent-modal-body />
           </modal>
         </div>
       </div>
@@ -81,14 +47,13 @@
 
 <script>
 import Modal from "@/components/Modal.vue";
-import flatPicker from "vue-flatpickr-component";
-import "flatpickr/dist/flatpickr.css";
+import RentModalBody from "./RentModalBody.vue";
 
 export default {
   name: "rent-card",
   components: {
     Modal,
-    flatPicker
+    RentModalBody,
   },
   data: () => {
     return {
@@ -96,12 +61,7 @@ export default {
       sub:
         "Some quick example text to build on the card title and make up the bulk of the card's content.",
       price: 1000,
-      modals: {
-        modal: false
-      },
-      dates: {
-        simple: '',
-      }
+      selected: false,
     };
   },
 };
