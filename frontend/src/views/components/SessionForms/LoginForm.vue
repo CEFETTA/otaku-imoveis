@@ -1,5 +1,5 @@
 <template>
-  <form role="form">
+  <form role="form" @submit.prevent="login">
     <base-input
       alternative
       class="mb-3"
@@ -16,8 +16,11 @@
       v-model="password"
     >
     </base-input>
+
     <div class="text-center">
-      <base-button type="primary" class="my-4">Entrar</base-button>
+      <base-button type="primary" class="my-4" v-on:click="login"
+        >Entrar</base-button
+      >
     </div>
   </form>
 </template>
@@ -29,6 +32,18 @@ export default {
       email: "",
       password: "",
     };
+  },
+  methods: {
+    login() {
+      this.$store
+        .dispatch("retrieveToken", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((_response) => {
+          this.$router.push({ name: "home" });
+        });
+    },
   },
 };
 </script>
