@@ -10,12 +10,12 @@
     <base-input
       alternative
       type="password"
-      placeholder="Password"
+      placeholder="Senha"
       addon-left-icon="ni ni-lock-circle-open"
     >
     </base-input>
     <div class="text-center">
-      <base-button type="primary" class="my-4">Sign in</base-button>
+      <base-button type="primary" class="my-4">Entrar</base-button>
     </div>
   </form>
 </template>
