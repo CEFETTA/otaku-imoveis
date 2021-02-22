@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Register from "./views/Register.vue";
+import Visits from "./views/Visits.vue";
 import RegisterRent from "./views/RegisterRent.vue";
 import Login from "./views/Login.vue";
 import Logout from "./views/components/SessionForms/Logout.vue";
@@ -50,6 +51,14 @@ export default new Router({
       components: {
         header: Navbar,
         default: RegisterRent
+      },
+    },
+    {
+      path: "/visits",
+      name: "visits",
+      components: {
+        header: Navbar,
+        default: Visits
       },
     },
   ],

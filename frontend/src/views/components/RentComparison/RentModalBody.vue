@@ -32,7 +32,7 @@
                 placeholder="Selecione uma data"
                 @on-open="focus"
                 @on-close="blur"
-                :config="{ allowInput: true }"
+                :config="{ allowInput: true, enableTime: true, dateFormat: 'd-m-Y H:i' }"
                 class="form-control datepicker"
                 v-model="dates.simple"
               >

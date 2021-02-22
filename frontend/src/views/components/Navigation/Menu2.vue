@@ -15,6 +15,9 @@
     <li class="nav-item" v-if="!loggedIn">
       <a class="nav-link" href="./#/register-rent">Anunciar</a>
     </li>
+    <li class="nav-item" v-if="!loggedIn">
+      <a class="nav-link" href="./#/visits">Visitas</a>
+    </li>
     <li class="nav-item" v-if="!!loggedIn">
       <a class="nav-link" href="./#/logout">Sair</a>
     </li>
