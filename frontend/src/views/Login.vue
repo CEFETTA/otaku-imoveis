@@ -35,6 +35,7 @@ export default {
 <style>	
 .section-background-img {	
   background-image: url(../assets/images/background.png);	
+  background-size: 100% 100%;
 }	
 .section-div-img {	
   max-width: 247px;	

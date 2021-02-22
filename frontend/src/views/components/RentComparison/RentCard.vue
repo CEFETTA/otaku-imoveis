@@ -1,7 +1,7 @@
 <template>
-  <div class="col card-border p-3 m-3">
+  <div class="col card-border m-3">
     <div class="card" style="width: 100%; height=auto;">
-      <img class="card-img-top" src="../../../assets/images/logo.svg" alt="" />
+      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/logo.svg" alt="" />
       <div class="card-body">
         <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">
