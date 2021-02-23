@@ -101,12 +101,12 @@ export default {
 		background: url('../../../assets/images/ap.jpg');
 		width: 100%;
 		margin: -24px;
-    margin-left: -9px;
-    margin-bottom: -25px;
+        margin-left: -9px;
+        margin-bottom: -25px;
 		position: relative;
 		background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
+        background-repeat: no-repeat;
+        background-position: left top;
 	}
 	.pop-up{
 		background-color: white;
