@@ -30,7 +30,7 @@
             Alugar
           </base-button>
           <modal :show.sync="selected">
-						<rent-modal-body/>
+			<rent-modal-body/>
             <button
               class="close"
               v-on:click="selected = false"
@@ -69,10 +69,8 @@ export default {
 </script>
 
 <style scoped>
-
 .card-border {
   box-shadow: 9px 11px 36px rgba(0, 0, 0, 0.21);
   border-radius: 6px;
 }
-
 </style>
