@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
     token: localStorage.getItem("token") || null,
   },
   getters: {
-    checkLogin: (state) => !!state.login,
+    checkLogin: (state) => !!state.token,
   },
   mutations: {
     retrieveUser(state, payload) {
@@ -39,10 +39,10 @@ export const store = new Vuex.Store({
     },
     logout(context) {
       return new Promise((resolve, reject) => {
-        if (context.getters.checkLogin()) {
-          localStorage.removeItem("token");
-          resolve();
-        }
+        // TODO: Destroy token on backend
+        localStorage.removeItem("token");
+        context.commit("destroyToken");
+        resolve();
       });
     },
   },
