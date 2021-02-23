@@ -10,7 +10,7 @@
           body-classes="px-xl-5 py-xl-5"
           class="border-0"
         >
-          <div class="container">
+          <form class="container">
             <div class="row justify-content-center">
               <!-- Casa/Apartamento-->
               <div class="px-5 col-sm col-md col-lg col-xl">
@@ -55,6 +55,7 @@
                   class="mb-3"
                   placeholder="CEP"
                   addon-left-icon="ni ni-pin-3"
+                  v-model="cep"
                 >
                 </base-input>
               </div>
@@ -70,6 +71,7 @@
                   alternative
                   placeholder="Estado"
                   addon-left-icon="ni ni-world"
+                  v-model="state"
                 >
                 </base-input>
               </div>
@@ -78,6 +80,7 @@
                   alternative
                   placeholder="Cidade"
                   addon-left-icon="ni ni-world-2"
+                  v-model="city"
                 >
                 </base-input>
               </div>
@@ -92,6 +95,7 @@
                   alternative
                   placeholder="Bairro"
                   addon-left-icon="ni ni-map-big"
+                  v-model="neighborhood_name"
                 >
                 </base-input>
               </div>
@@ -106,6 +110,7 @@
                   alternative
                   placeholder="Rua/Avenida"
                   addon-left-icon="ni ni-square-pin"
+                  v-model="address"
                 >
                 </base-input>
               </div>
@@ -120,6 +125,7 @@
                   alternative
                   placeholder="Nº"
                   addon-left-icon="ni ni-tag"
+                  v-model="number"
                 >
                 </base-input>
               </div>
@@ -128,6 +134,7 @@
                   alternative
                   placeholder="Complemento"
                   addon-left-icon="ni ni-info"
+                  v-model="complement"
                 >
                 </base-input>
               </div>
@@ -146,6 +153,7 @@
                   alternative
                   placeholder="Andar"
                   addon-left-icon="ni ni-building"
+                  v-model="floor"
                 >
                 </base-input>
               </div>
@@ -165,6 +173,7 @@
                   alternative
                   placeholder="Valor do aluguel"
                   addon-left-icon="ni ni-diamond"
+                  v-model="rental_price"
                 >
                 </base-input>
               </div>
@@ -175,6 +184,7 @@
                   placeholder="Valor do condomínio"
                   addon-left-icon="ni ni-money-coins"
                   v-if="this.type == 'apartment'"
+                  v-model="condominium_price"
                 >
                 </base-input>
               </div>
@@ -190,6 +200,7 @@
                   alternative
                   placeholder="Área (em metros quadrados)"
                   addon-left-icon="ni ni-box-2"
+                  v-model="area"
                 >
                 </base-input>
               </div>
@@ -374,7 +385,7 @@
                 >Anunciar</base-button
               >
             </div>
-          </div>
+          </form>
         </card>
       </div>
     </div>
@@ -392,6 +403,11 @@ export default {
       parking_spaces: 0,
       has_wardrobe: null,
       has_24h_concierge: null,
+      cep: "",
+      state: "",
+      city: "",
+      neighborhood_name: "",
+      // TODO: ADD OTHER FIELDS
     };
   },
   methods: {
