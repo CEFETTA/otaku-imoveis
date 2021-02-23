@@ -1,7 +1,7 @@
 <template>
-  <div class="col card-border p-3 m-3">
+  <div class="col card-border m-3">
     <div class="card" style="width: 100%; height=auto;">
-      <img class="card-img-top" src="../../../assets/images/logo.svg" alt="" />
+      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/logo.svg" alt="" />
       <div class="card-body">
         <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">
@@ -30,14 +30,15 @@
             Alugar
           </base-button>
           <modal :show.sync="selected">
+						<rent-modal-body/>
             <button
               class="close"
               v-on:click="selected = false"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span style="position:absolute; top:0; padding-top:10px;" aria-hidden="true">&times;</span>
             </button>
-            <rent-modal-body />
+
           </modal>
         </div>
       </div>
@@ -68,8 +69,10 @@ export default {
 </script>
 
 <style scoped>
+
 .card-border {
   box-shadow: 9px 11px 36px rgba(0, 0, 0, 0.21);
   border-radius: 6px;
 }
+
 </style>
