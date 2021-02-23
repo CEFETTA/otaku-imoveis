@@ -90,14 +90,13 @@
                 class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
               ></div>
 
-              <div class="px-5 col-sm col-md col-lg col-xl">
-                <base-input
-                  alternative
-                  placeholder="Bairro"
-                  addon-left-icon="ni ni-map-big"
-                  v-model="neighborhood_name"
-                >
-                </base-input>
+              <!-- Bairro -->
+              <div class="px-5 col-sm col-md col-lg col-xl mb-2">
+                <select placeholder="Selecione um bairro ..." class="form-control" v-model="neighborhood_name" aria-placeholder="Selecione um Bairro ...">
+                  <option disabled value="">Escolha um bairro ...</option>
+                  <option v-for="(item, index) in this.neighborhood_name_array" :value="item" :key="index">{{item}}</option>
+                </select>
+
               </div>
 
               <!-- Force next columns to break to new line at md breakpoint and up -->
@@ -407,6 +406,7 @@ export default {
       state: "",
       city: "",
       neighborhood_name: "",
+      neighborhood_name_array: ["Gameleira", "Liberdade", "Dona Clara", "Santa Efigênia", "Pampulha"].sort()
       // TODO: ADD OTHER FIELDS
     };
   },
