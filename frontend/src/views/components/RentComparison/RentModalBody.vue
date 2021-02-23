@@ -15,7 +15,7 @@
 				</div>
 		</span>
 
-    <div class="col-sm">
+    <div class="col-sm" style="padding-right: 0px;">
       <div class="d-block">
         <p class="h4 text-center">Seu próximo dojô está aqui!</p>
       </div>
@@ -84,6 +84,11 @@ export default {
 			type: String,
 			default: '150,00'
 		},
+
+		url:{
+			types: String,
+			default: '../../../assets/images/ap.jpg'
+		}
 	},
   data: () => {
     return {
@@ -92,6 +97,11 @@ export default {
       },
     };
   },
+	computed: {
+      backgroundImage () {
+        return 'background: ' + this.url;
+      }
+    },
 };
 </script>
 
@@ -101,28 +111,20 @@ export default {
 		background: url('../../../assets/images/ap.jpg');
 		width: 100%;
 		margin: -24px;
-        margin-left: -9px;
-        margin-bottom: -25px;
+		margin-left: -9px;
+		margin-bottom: -25px;
 		position: relative;
 		background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: left top;
-	}
-	.pop-up{
-		background-color: white;
-		width: 700px;
-		height: 500px;
-		margin: auto;
-		display: flex;
-		background: aquamarine;
-	}
-	.img{
+		background-repeat: no-repeat;
+		background-position: left top;
 		display: flex;
 		flex-flow: column-reverse;
 	}
+
 	.info{
 		height: fit-content;
 		margin: 10px;
+		margin-left: 0px;
 		border-radius: 6px;
 		background: rgba(255, 255, 255, 0.45);
 		backdrop-filter: blur(20px);
@@ -141,10 +143,5 @@ export default {
 		font-size: 10px;
 		line-height:1;
 		width: 100%;
-	}
-	.form {
-		background-color: blue;
-		width: 200px;
-		height: 500px;
 	}
 </style>
