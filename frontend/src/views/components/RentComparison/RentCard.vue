@@ -30,14 +30,15 @@
             Alugar
           </base-button>
           <modal :show.sync="selected">
+						<rent-modal-body/>
             <button
               class="close"
               v-on:click="selected = false"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span style="position:absolute; top:0; padding-top:10px;" aria-hidden="true">&times;</span>
             </button>
-            <rent-modal-body />
+
           </modal>
         </div>
       </div>
@@ -68,8 +69,8 @@ export default {
 </script>
 
 <style scoped>
-.card-border {
-  box-shadow: 9px 11px 36px rgba(0, 0, 0, 0.21);
-  border-radius: 6px;
-}
+	.card-border {
+		box-shadow: 9px 11px 36px rgba(0, 0, 0, 0.21);
+		border-radius: 6px;
+	}
 </style>

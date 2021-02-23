@@ -1,9 +1,21 @@
 <template>
   <div class="row">
-    <div class="col-sm">
-      <img class="mw-100" src="../../../assets/images/logo.svg" />
-    </div>
-    <div class="col-sm">
+
+    <span class="col img background">
+				<div class="info">
+						<div class="linha1" style="word-wrap: break-word;">
+								<span>{{street}}</span>
+								<div>
+									<span style="color: #34a574; white-space:nowrap;">R$ {{price}}</span>
+								</div>
+						</div>
+						<div class="linha2">
+								<span>{{district}}</span>
+						</div>
+				</div>
+		</span>
+
+    <div class="col-sm" style="padding-right: 0px;">
       <div class="d-block">
         <p class="h4 text-center">Seu próximo dojô está aqui!</p>
       </div>
@@ -59,6 +71,25 @@ export default {
     Modal,
     FlatPicker,
   },
+	props: {
+		street: {
+			type: String,
+			default: 'Rua Zurick'
+		},
+		district: {
+			type: String,
+			default: 'Nova Suica, Belo Horizonte'
+		},
+		price: {
+			type: String,
+			default: '150,00'
+		},
+
+		url:{
+			types: String,
+			default: '../../../assets/images/ap.jpg'
+		}
+	},
   data: () => {
     return {
       dates: {
@@ -66,5 +97,51 @@ export default {
       },
     };
   },
+	computed: {
+      backgroundImage () {
+        return 'background: ' + this.url;
+      }
+    },
 };
 </script>
+
+
+<style scoped>
+	.background{
+		background: url('../../../assets/images/ap.jpg');
+		width: 100%;
+		margin: -24px;
+		margin-left: -9px;
+		margin-bottom: -25px;
+		position: relative;
+		background-size: auto 100%;
+		background-repeat: no-repeat;
+		background-position: left top;
+		display: flex;
+		flex-flow: column-reverse;
+	}
+
+	.info{
+		height: fit-content;
+		margin: 10px;
+		margin-left: 0px;
+		border-radius: 6px;
+		background: rgba(255, 255, 255, 0.45);
+		backdrop-filter: blur(20px);
+		padding: 8px;
+		line-height: 50px;
+		border-radius: 6px;
+	}
+	.linha1 {
+		font-size: 15px;
+		line-height: 20px;
+		padding-bottom: 5px;
+		display: flex;
+		justify-content: space-between;
+	}
+	.linha2 {
+		font-size: 10px;
+		line-height:1;
+		width: 100%;
+	}
+</style>
