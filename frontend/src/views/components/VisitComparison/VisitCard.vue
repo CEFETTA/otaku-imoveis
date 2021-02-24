@@ -1,6 +1,6 @@
 <template>
-  <div class="col card-border m-3">
-    <div class="card" style="width: 100%; height=auto;">
+  <div class="col m-3">
+    <div class="card card-border" style="width: 100%; height=auto;">
       <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/logo.svg" alt="" />
       <div class="card-body">
         <h5 class="card-title">{{ rentSubject.address }}</h5>
