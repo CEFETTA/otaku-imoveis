@@ -40,10 +40,10 @@
               <!-- Imagens -->
               <div class="px-5 col-sm col-md col-lg col-xl mb-2">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="validatedCustomFile" required multiple @change="teste($event)">
+                  <input type="file" class="custom-file-input" id="validatedCustomFile" required @change="uploadImage($event)">
                   <!-- No label coloca os nomes das imagens -->
-                  <!-- Os nomes ficam em $event -> target -> files -->
-                  <label class="custom-file-label" for="validatedCustomFile">Escolha as imagens ...</label>
+                  <!-- O nome fica em $event -> target -> files -->
+                  <label class="custom-file-label" for="validatedCustomFile">{{this.formData.filename}}</label>
                 </div>
               </div>
 
@@ -439,6 +439,7 @@ export default {
                 rental_price: "",
                 condominium_price: "",
                 area: "",
+                filename: "Escolha uma imagem ..."
                 // TODO: description
             },
             neighborhood_name: "",
@@ -458,8 +459,9 @@ export default {
             this.$router.push({ name: "home" });
         });
     },
-    teste(evt){
-      console.log(evt);
+    uploadImage(evt){
+      var self = this;
+      this.formData['filename'] = evt.target.files[0].name;
     }
   },
 }
