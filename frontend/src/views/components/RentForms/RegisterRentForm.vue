@@ -376,37 +376,45 @@
           </form>
 </template>
 <script>
+import fetchNeighborhood from "./js/fetchNeighborhood";
+
 export default {
     name: "register-rent-form",
+    created() {
+        fetchNeighborhood().then((response) => {
+            console.log(response)
+            this.neighborhood_name_array = response.data.map((data) => data.neighborhood);
+        });
+    },
     data() {
-    return {
-      type: "",
-      rooms: 0,
-      suites: 0,
-      living_rooms: 0,
-      parking_spaces: 0,
-      has_wardrobe: null,
-      has_24h_concierge: null,
-      cep: "",
-      state: "",
-      city: "",
-      neighborhood_name: "",
-      neighborhood_name_array: ["Gameleira", "Liberdade", "Dona Clara", "Santa Efigênia", "Pampulha"].sort(),
-      adress: "",
-      number: "",
-      complement: "",
-      floor: "",
-      rental_price: "",
-      condominium_price: "",
-      area: ""
-    };
+        return {
+            type: "",
+            rooms: 0,
+            suites: 0,
+            living_rooms: 0,
+            parking_spaces: 0,
+            has_wardrobe: null,
+            has_24h_concierge: null,
+            cep: "",
+            state: "",
+            city: "",
+            neighborhood_name: "",
+            neighborhood_name_array: ["Gameleira", "Liberdade", "Dona Clara", "Santa Efigênia", "Pampulha"].sort(),
+            adress: "",
+            number: "",
+            complement: "",
+            floor: "",
+            rental_price: "",
+            condominium_price: "",
+            area: ""
+        };
   },
   methods: {
     changeSpace(evt, space) {
       var self = this;
       this[space] = evt.target.value;
     },
-    registerRent() {
+    submitRegisterRent() {
       registerRent()
     }
   },
