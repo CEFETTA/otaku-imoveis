@@ -37,6 +37,21 @@
                 class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
               ></div>
 
+              <!-- Imagens -->
+              <div class="px-5 col-sm col-md col-lg col-xl mb-2">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="validatedCustomFile" required multiple @change="teste($event)">
+                  <!-- No label coloca os nomes das imagens -->
+                  <!-- Os nomes ficam em $event -> target -> files -->
+                  <label class="custom-file-label" for="validatedCustomFile">Escolha as imagens ...</label>
+                </div>
+              </div>
+
+              <!-- Force next columns to break to new line at md breakpoint and up -->
+              <div
+                class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
+              ></div>
+
               <!-- CEP -->
               <div class="px-5 col-sm col-md col-lg col-xl">
                 <base-input
@@ -442,6 +457,9 @@ export default {
         registerRent(this.formData.type, this.formData).then(() => {
             this.$router.push({ name: "home" });
         });
+    },
+    teste(evt){
+      console.log(evt);
     }
   },
 }
