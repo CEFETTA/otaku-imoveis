@@ -5,12 +5,14 @@
       <div class="container">
         <div class="row mx-md-n5">
           <div class="col-sm p-5 m-5 text-right">
-            <base-input
-              alternative
-              placeholder="Buscar Bairro"
-              addon-left-icon="ni ni-zoom-split-in"
-            ></base-input>
-            <button type="button p-5" class="btn btn-primary">Encontrar</button>
+              <div style="justify-content: center;" class="col-sm col-md col-lg col-xl mb-2">
+                <select placeholder="Selecione um bairro ..." class="form-control" v-model="neighborhood_name_filter" aria-placeholder="Selecione um Bairro ...">
+                  <option disabled value="">Escolha um bairro ...</option>
+                  <option v-for="(item, index) in this.neighborhood_name_array" :value="item" :key="index">{{item}}</option>
+                </select>
+
+              </div>
+            <button type="button p-5" class="btn btn-primary" @click="filterByNbhood()">Encontrar</button>
           </div>
           <div class="col-sm m-3">
             <img class="div-img" src="../assets/images/logo.svg" />
@@ -58,6 +60,7 @@
 <script>
 import RentCard from "./components/RentComparison/RentCard";
 import fetchOptions from "./components/RentComparison/js/fetchOptions";
+import fetchNeighborhood from "./components/RentForms/js/fetchNeighborhood";
 
 export default {
   name: "components",
@@ -67,13 +70,43 @@ export default {
   created() {
     fetchOptions().then((options) => {
       this.rentOptions = options;    
+    }).then(()=> {
+      this.backup_houses = this.rentOptions.houses;
+
     })
+
+    fetchNeighborhood().then((response) => {
+        this.neighborhood_list = response.data;
+        this.neighborhood_name_array = response.data.map((data) => data.neighborhood);
+    });
+    
   },
   data() {
     return {
       rentOptions: {
         houses: [],
         apartments: []
+      },
+      neighborhood_name_filter: "",
+      neighborhood_list: [],
+      neighborhood_name_array: [],
+      backup_houses: []
+    }
+  },
+  methods: {
+    filterByNbhood() {
+      const nbHoodIndex = this.neighborhood_name_array.indexOf(this.neighborhood_name_filter);
+      if (nbHoodIndex >= 0) {
+        console.log(nbHoodIndex)
+        console.log(this.backup_houses)
+        const filteredRents = this.backup_houses.filter((house) => {
+          console.log(this.neighborhood_list[nbHoodIndex], house.neighborhood_id)
+          return house.neighborhood_id === this.neighborhood_list[nbHoodIndex].id
+        });
+        if (filteredRents.length) {
+          this.rentOptions.houses = filteredRents
+
+        }
       }
     }
   }
