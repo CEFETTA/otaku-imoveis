@@ -337,7 +337,7 @@
                   >
                 </div>
               </div>
-              <div class="px-5 col-sm col-md col-lg col-xl">
+              <div v-if="this.formData.type=='apartment'" class="px-5 col-sm col-md col-lg col-xl">
                 <!-- Possui portaria 24 horas -->
                 <p class="h6">Possui portaria 24 horas?</p>
                 <div class="form-check form-check-inline text-center">
@@ -367,6 +367,17 @@
                   >
                 </div>
               </div>
+
+              <!-- Force next columns to break to new line at md breakpoint and up -->
+              <div
+                class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
+              ></div>
+
+              <!-- Descrição -->
+              <div class="px-5 col-sm col-md col-lg col-xl">
+                <textarea class="form-control form-control-alternative" rows="3" placeholder="Descreva seu imóvel ..."></textarea>
+              </div>
+
             </div>
             <div class="text-center">
                 <base-button
