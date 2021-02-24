@@ -12,10 +12,9 @@
     </div>
     <!-- Cards -->
     <div
-      class="row d-flex justify-content-center p-xl"
-      style="max-width: 100%; heigth: auto;"
+      class="row justify-content-center"
     >
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="row d-flex flex-fill flex-wrap p-5 div-card-limits">
         <visit-card v-for="visit in visits" :key="visit.id" :visit-data="visit" />
       </div>
     </div>
@@ -81,5 +80,9 @@ export default {
   max-height: 341px;
   width: auto;
   height: auto;
+}
+
+.div-card-limits {
+  max-width: 908px;
 }
 </style>
