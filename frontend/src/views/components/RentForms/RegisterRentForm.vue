@@ -43,17 +43,17 @@
                   <input type="file" class="custom-file-input" id="validatedCustomFile" required @change="uploadImage($event)">
                   <!-- No label coloca os nomes das imagens -->
                   <!-- O nome fica em $event -> target -> files -->
-                  <label class="custom-file-label" for="validatedCustomFile">{{this.formData.filename}}</label>
+                  <label class="custom-file-label" for="validatedCustomFile">{{this.fileLabel}}</label>
                 </div>
               </div>
 
               <!-- Force next columns to break to new line at md breakpoint and up -->
               <div
-                v-if="this.formData.filename != 'Escolha uma imagem ...'"
+                v-if="this.fileLabel != 'Escolha uma imagem ...'"
                 class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
               ></div>
 
-              <div v-if="this.formData.filename != 'Escolha uma imagem ...'" class="px-5 col-sm col-md col-lg col-xl mb-2">
+              <div v-if="this.fileLabel != 'Escolha uma imagem ...'" class="px-5 col-sm col-md col-lg col-xl mb-2">
                 <div class="row justify-content-center">
                   <img id="upload-img" src="" alt="" style="max-width: 246px; max-heigth: 253px; width: auto; heigth: auto;">
                 </div>
@@ -420,6 +420,7 @@
 <script>
 import fetchNeighborhood from "./js/fetchNeighborhood";
 import registerRent from "./js/registerRent";
+import uploadFile from "./js/uploadFile";
 
 export default {
     name: "register-rent-form",
@@ -451,9 +452,10 @@ export default {
                 rental_price: "",
                 condominium_price: "",
                 area: "",
-                filename: "Escolha uma imagem ..."
+                filename: ""
                 // TODO: description
             },
+            fileLabel: "Escolha uma imagem ...",
             neighborhood_name: "",
             neighborhood_list: [],
             neighborhood_name_array: ["Gameleira", "Liberdade", "Dona Clara", "Santa Efigênia", "Pampulha"].sort(),
@@ -473,7 +475,7 @@ export default {
     },
     uploadImage(evt){
       var self = this;
-      this.formData['filename'] = evt.target.files[0].name;
+      this.fileLabel = evt.target.files[0].name;
 
       const file = evt.target.files[0];
       const fileReader = new FileReader();
@@ -481,8 +483,12 @@ export default {
       fileReader.onloadend = function(){
         document.getElementById('upload-img').setAttribute('src', fileReader.result);
       }
-
       fileReader.readAsDataURL(file);
+      
+      uploadFile(file).then((response) => {
+        console.log(response)
+        this.formData.filename = response.data.filename;
+      });
     }
   },
 }

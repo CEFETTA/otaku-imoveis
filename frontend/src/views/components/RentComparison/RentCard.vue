@@ -1,7 +1,8 @@
 <template>
   <div class="col m-3">
     <div class="card card-border" style="width: 100%; height=auto;">
-      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/not-found.svg" alt="" />
+      <img v-if="!$props.cardData.filename" class="card-img-top" style="max-height: 197px;" src="../../../assets/images/not-found.svg" alt="" />
+      <img v-if="$props.cardData.filename" class="card-img-top" style="max-height: 197px;" v-bind:src="`http://localhost:3333/files/${$props.cardData.filename}`">
       <div class="card-body">
         <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">
@@ -72,7 +73,8 @@ export default {
         "California",
       price: 1000,
       selected: false,
-      labels: []
+      labels: [],
+      notFoundSrc: "../../../assets/images/not-found.svg"
     };
   },
   props: ["card-data"]
