@@ -8,6 +8,7 @@
               <div style="justify-content: center;" class="col-sm col-md col-lg col-xl mb-2">
                 <select placeholder="Selecione um bairro ..." class="form-control" v-model="neighborhood_name_filter" aria-placeholder="Selecione um Bairro ...">
                   <option disabled value="">Escolha um bairro ...</option>
+                  <option value="REMOVE" key="_0">Remover Filtros</option>
                   <option v-for="(item, index) in this.neighborhood_name_array" :value="item" :key="index">{{item}}</option>
                 </select>
 
@@ -24,7 +25,7 @@
     <div
       class="row justify-content-center"
     >
-      <div class="row d-flex flex-fill flex-wrap p-5 div-card-limits">
+      <div class="justify-content-center row d-flex flex-fill flex-wrap p-5 div-card-limits">
         <rent-card v-for="house in rentOptions.houses" :key="house.id" :card-data="house"></rent-card>
       </div>
     </div>
@@ -96,16 +97,15 @@ export default {
   methods: {
     filterByNbhood() {
       const nbHoodIndex = this.neighborhood_name_array.indexOf(this.neighborhood_name_filter);
+      if (this.neighborhood_name_filter === "REMOVE") {
+        this.rentOptions.houses = this.backup_houses
+      }
       if (nbHoodIndex >= 0) {
-        console.log(nbHoodIndex)
-        console.log(this.backup_houses)
         const filteredRents = this.backup_houses.filter((house) => {
-          console.log(this.neighborhood_list[nbHoodIndex], house.neighborhood_id)
           return house.neighborhood_id === this.neighborhood_list[nbHoodIndex].id
         });
         if (filteredRents.length) {
           this.rentOptions.houses = filteredRents
-
         }
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="col m-3">
+  <div class="col m-3" style="max-width: 300px; min-width: 200px">
     <div class="card card-border" style="width: 100%; height=auto;">
       <img v-if="!rentSubject.filename" class="card-img-top" style="max-height: 197px;" src="../../../assets/images/not-found.svg" alt="" />
       <img v-if="rentSubject.filename"  style="max-height: 197px;" v-bind:src="`http://localhost:3333/files/${rentSubject.filename}`">
