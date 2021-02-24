@@ -6,19 +6,24 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    email: "",
+    email: localStorage.getItem("email") || "",
+    username: localStorage.getItem("username") || "",
     token: localStorage.getItem("token") || null,
   },
   getters: {
     checkLogin: (state) => !!state.token,
+    getEmail: (state) => state.email,
+    getUsername: (state) => state.username
   },
   mutations: {
     retrieveUser(state, payload) {
       state.token = payload.token;
       state.email = payload.email || "";
+      state.username = payload.username || "";
     },
     destroyToken(state) {
       state.token = null;
+      state.email = "";
     },
   },
   actions: {
@@ -27,8 +32,11 @@ export const store = new Vuex.Store({
         performLogin(credentials.email, credentials.password)
           .then((response) => {
             const token = response.data.token;
+            const user = response.data.user;
             localStorage.setItem("token", token);
-            context.commit("retrieveUser", { token, email: credentials.email });
+            localStorage.setItem("email", user.email);
+            localStorage.setItem("username", user.name);
+            context.commit("retrieveUser", { token, email: user.email, username: user.name });
 
             resolve(response);
           })

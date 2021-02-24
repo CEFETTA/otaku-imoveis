@@ -27,7 +27,7 @@
             Alugar
           </base-button>
           <modal :show.sync="selected">
-						<rent-modal-body/>
+						<rent-modal-body :card-data="$props.cardData"/>
             <button
               class="close"
               v-on:click="selected = false"
@@ -69,7 +69,7 @@ export default {
     return {
       title: "Card title",
       sub:
-        "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "California",
       price: 1000,
       selected: false,
       labels: []

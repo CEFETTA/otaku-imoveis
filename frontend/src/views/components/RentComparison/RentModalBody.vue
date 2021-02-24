@@ -4,13 +4,13 @@
     <span class="col img background">
 				<div class="info">
 						<div class="linha1" style="word-wrap: break-word;">
-								<span>{{street}}</span>
+								<span>{{cardData.address}}</span>
 								<div>
-									<span style="color: #34a574; white-space:nowrap;">R$ {{price}}</span>
+									<span style="color: #34a574; white-space:nowrap;">R$ {{cardData.rental_price}}</span>
 								</div>
 						</div>
 						<div class="linha2">
-								<span>{{district}}</span>
+								<span>{{cardData.neighborhood}}, {{cardData.city}}</span>
 						</div>
 				</div>
 		</span>
@@ -20,13 +20,14 @@
         <p class="h4 text-center">Seu próximo dojô está aqui!</p>
       </div>
       <div class="d-block">
-        <div class="row d-flex">
+        <form class="row d-flex">
           <div class="col-sm m-2">
             <base-input
               alternative
               class="mb-3"
               placeholder="seu e-mail"
               addon-left-icon="ni ni-email-83"
+			  v-model="email"
             >
             </base-input>
 
@@ -35,6 +36,7 @@
               class="mb-3"
               placeholder="seu nome"
               addon-left-icon="ni ni-circle-08"
+			  v-model="username"
             >
             </base-input>
 
@@ -55,7 +57,7 @@
               <base-button type="primary">Agendar visita</base-button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -72,35 +74,32 @@ export default {
     FlatPicker,
   },
 	props: {
-		street: {
-			type: String,
-			default: 'Rua Zurick'
-		},
-		district: {
-			type: String,
-			default: 'Nova Suica, Belo Horizonte'
-		},
-		price: {
-			type: String,
-			default: '150,00'
-		},
-
-		url:{
+		url: {
 			types: String,
 			default: '../../../assets/images/ap.jpg'
+		},
+		cardData: {
+			types: Object
 		}
 	},
-  data: () => {
-    return {
-      dates: {
-        simple: "",
-      },
-    };
-  },
+	created() {
+		this.email = this.$store.getters.getEmail
+		this.username = this.$store.getters.getUsername
+	},
+	data: () => {
+		return {
+			teste:"hey",
+			email: "",
+			username: "",
+			dates: {
+				simple: "",
+			},
+		};
+	},
 	computed: {
       backgroundImage () {
-        return 'background: ' + this.url;
-      }
+      	return 'background: ' + this.url;
+      },
     },
 };
 </script>
