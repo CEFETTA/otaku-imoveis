@@ -65,6 +65,7 @@ export default {
       selected: false,
     };
   },
+  props: ["card-data"]
 };
 </script>
 
