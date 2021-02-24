@@ -24,9 +24,7 @@
       style="max-width: 100%; heigth: auto;"
     >
       <div class="row row-cols-1 row-cols-md-2 g-4">
-        <rent-card></rent-card>
-        <rent-card></rent-card>
-        <rent-card></rent-card>
+        <rent-card v-for="house in rentOptions.houses" :key="house.id" :card-data="house"></rent-card>
       </div>
     </div>
     <!-- Paginação -->
@@ -60,15 +58,24 @@
 
 <script>
 import RentCard from "./components/RentComparison/RentCard";
+import fetchOptions from "./components/RentComparison/js/fetchOptions";
 
 export default {
   name: "components",
   components: {
     RentCard,
   },
+  created() {
+    fetchOptions().then((options) => {
+      this.rentOptions = options;    
+    })
+  },
   data() {
     return {
-      
+      rentOptions: {
+        houses: [],
+        apartments: []
+      }
     }
   }
 };

@@ -44,7 +44,7 @@
                   class="mb-3"
                   placeholder="CEP"
                   addon-left-icon="ni ni-pin-3"
-                  v-model="cep"
+                  v-model="formData.cep"
                 >
                 </base-input>
               </div>
@@ -60,7 +60,7 @@
                   alternative
                   placeholder="Estado"
                   addon-left-icon="ni ni-world"
-                  v-model="state"
+                  v-model="formData.state"
                 >
                 </base-input>
               </div>
@@ -69,7 +69,7 @@
                   alternative
                   placeholder="Cidade"
                   addon-left-icon="ni ni-world-2"
-                  v-model="city"
+                  v-model="formData.city"
                 >
                 </base-input>
               </div>
@@ -98,7 +98,7 @@
                   alternative
                   placeholder="Rua/Avenida"
                   addon-left-icon="ni ni-square-pin"
-                  v-model="address"
+                  v-model="formData.address"
                 >
                 </base-input>
               </div>
@@ -113,7 +113,7 @@
                   alternative
                   placeholder="Nº"
                   addon-left-icon="ni ni-tag"
-                  v-model="number"
+                  v-model="formData.number"
                 >
                 </base-input>
               </div>
@@ -122,7 +122,7 @@
                   alternative
                   placeholder="Complemento"
                   addon-left-icon="ni ni-info"
-                  v-model="complement"
+                  v-model="formData.complement"
                 >
                 </base-input>
               </div>
@@ -130,24 +130,24 @@
               <!-- Force next columns to break to new line at md breakpoint and up -->
               <div
                 class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
-                v-if="this.type == 'apartment'"
+                v-if="this.formData.type == 'apartment'"
               ></div>
 
               <div
                 class="px-5 col-sm col-md col-lg col-xl"
-                v-if="this.type == 'apartment'"
+                v-if="this.formData.type == 'apartment'"
               >
                 <base-input
                   alternative
                   placeholder="Andar"
                   addon-left-icon="ni ni-building"
-                  v-model="floor"
+                  v-model="formData.floor"
                 >
                 </base-input>
               </div>
               <div
                 class="px-5 col-sm col-md col-lg col-xl"
-                v-if="this.type == 'apartment'"
+                v-if="this.formData.type == 'apartment'"
               ></div>
 
               <!-- Force next columns to break to new line at md breakpoint and up -->
@@ -161,7 +161,7 @@
                   alternative
                   placeholder="Valor do aluguel"
                   addon-left-icon="ni ni-diamond"
-                  v-model="rental_price"
+                  v-model="formData.rental_price"
                 >
                 </base-input>
               </div>
@@ -171,8 +171,8 @@
                   alternative
                   placeholder="Valor do condomínio"
                   addon-left-icon="ni ni-money-coins"
-                  v-if="this.type == 'apartment'"
-                  v-model="condominium_price"
+                  v-if="this.formData.type == 'apartment'"
+                  v-model="formData.condominium_price"
                 >
                 </base-input>
               </div>
@@ -188,7 +188,7 @@
                   alternative
                   placeholder="Área (em metros quadrados)"
                   addon-left-icon="ni ni-box-2"
-                  v-model="area"
+                  v-model="formData.area"
                 >
                 </base-input>
               </div>
@@ -203,7 +203,7 @@
                 <!-- Quantidade de quartos -->
                 <label for="customRange2" class="form-label"
                   ><p class="h6">
-                    Quantidade de quartos: {{ this.rooms }}
+                    Quantidade de quartos: {{ this.formData.rooms }}
                   </p></label
                 ><br />
                 <input
@@ -220,7 +220,7 @@
                 <!-- Quantidade de suites -->
                 <label for="customRange2" class="form-label"
                   ><p class="h6">
-                    Quantidade de suites: {{ this.suites }}
+                    Quantidade de suites: {{ this.formData.suites }}
                   </p></label
                 ><br />
                 <input
@@ -243,7 +243,7 @@
                 <!-- Quantidade de salas de estar -->
                 <label for="customRange2" class="form-label"
                   ><p class="h6 text-nowrap">
-                    Quantidade de salas de estar: {{ this.living_rooms }}
+                    Quantidade de salas de estar: {{ this.formData.living_rooms }}
                   </p></label
                 ><br />
                 <input
@@ -260,15 +260,15 @@
               <div class="px-5 col-sm col-md col-lg col-xl text-nowrap">
                 <!-- Quantidade de salas de jantar -->
                 <label
-                  v-if="this.type == 'apartment'"
+                  v-if="this.formData.type == 'apartment'"
                   for="customRange2"
                   class="form-label"
                   ><p class="h6">
-                    Quantidade de salas de jantar: {{ this.living_rooms }}
+                    Quantidade de salas de jantar: {{ this.formData.living_rooms }}
                   </p></label
                 ><br />
                 <input
-                  v-if="this.type == 'apartment'"
+                  v-if="this.formData.type == 'apartment'"
                   type="range"
                   class="form-range"
                   min="0"
@@ -288,7 +288,7 @@
                 <!-- Número de vagas na garagem -->
                 <label for="customRange2" class="form-label"
                   ><p class="h6">
-                    Nº de vagas na garagem: {{ this.parking_spaces }}
+                    Nº de vagas na garagem: {{ this.formData.parking_spaces }}
                   </p></label
                 ><br />
                 <input
@@ -337,7 +337,7 @@
                   >
                 </div>
               </div>
-              <div class="px-5 col-sm col-md col-lg col-xl">
+              <div v-if="this.formData.type=='apartment'" class="px-5 col-sm col-md col-lg col-xl">
                 <!-- Possui portaria 24 horas -->
                 <p class="h6">Possui portaria 24 horas?</p>
                 <div class="form-check form-check-inline text-center">
@@ -367,55 +367,81 @@
                   >
                 </div>
               </div>
+
+              <!-- Force next columns to break to new line at md breakpoint and up -->
+              <div
+                class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
+              ></div>
+
+              <!-- Descrição -->
+              <div class="px-5 col-sm col-md col-lg col-xl">
+                <textarea class="form-control form-control-alternative" rows="3" placeholder="Descreva seu imóvel ..."></textarea>
+              </div>
+
             </div>
             <div class="text-center">
-              <base-button block type="primary" class="my-4"
-                >Anunciar</base-button
-              >
+                <base-button
+                    block type="primary"
+                    class="my-4"
+                    @click="submitRegisterRent()"
+                >
+                Anunciar
+                </base-button>
             </div>
           </form>
 </template>
 <script>
 import fetchNeighborhood from "./js/fetchNeighborhood";
+import registerRent from "./js/registerRent";
 
 export default {
     name: "register-rent-form",
     created() {
         fetchNeighborhood().then((response) => {
-            console.log(response)
+            this.neighborhood_list = response.data;
             this.neighborhood_name_array = response.data.map((data) => data.neighborhood);
         });
     },
     data() {
         return {
-            type: "",
-            rooms: 0,
-            suites: 0,
-            living_rooms: 0,
-            parking_spaces: 0,
-            has_wardrobe: null,
-            has_24h_concierge: null,
-            cep: "",
-            state: "",
-            city: "",
+            formData: {
+                type: "",
+                rooms: 0,
+                suites: 0,
+                living_rooms: 0,
+                dining_rooms: 0,
+                parking_spaces: 0,
+                has_wardrobe: false,
+                has_24h_concierge: false,
+                cep: "",
+                state: "",
+                city: "",
+                address: "",
+                number: "",
+                complement: "",
+                neighborhood_id: "",
+                floor: "",
+                rental_price: "",
+                condominium_price: "",
+                area: "",
+                // TODO: description
+            },
             neighborhood_name: "",
+            neighborhood_list: [],
             neighborhood_name_array: ["Gameleira", "Liberdade", "Dona Clara", "Santa Efigênia", "Pampulha"].sort(),
-            adress: "",
-            number: "",
-            complement: "",
-            floor: "",
-            rental_price: "",
-            condominium_price: "",
-            area: ""
         };
   },
   methods: {
     changeSpace(evt, space) {
-      var self = this;
-      this[space] = evt.target.value;
+        var self = this;
+        this.formData[space] = evt.target.value;
     },
     submitRegisterRent() {
-      registerRent()
+        const matchNbhood = this.neighborhood_list.find((nbhood) => nbhood.neighborhood ===  this.neighborhood_name);
+        this.formData.neighborhood_id = matchNbhood.id;
+        registerRent(this.formData.type, this.formData).then(() => {
+            this.$router.push({ name: "home" });
+        });
     }
   },
 }

@@ -4,7 +4,7 @@
       alternative
       class="mb-3"
       placeholder="Nome"
-      addon-left-icon="ni ni-email-83"
+      addon-left-icon="ni ni-circle-08"
       v-model="name"
     >
     </base-input>
