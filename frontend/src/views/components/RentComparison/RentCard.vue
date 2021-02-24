@@ -1,7 +1,7 @@
 <template>
   <div class="col card-border m-3">
     <div class="card" style="width: 100%; height=auto;">
-      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/logo.svg" alt="" />
+      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/not-found.svg" alt="" />
       <div class="card-body">
         <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">
@@ -9,11 +9,8 @@
         </p>
       </div>
       <div class="badge-row row">
-        <div class="col-sm" style="flex-grow: 0;">
-          <span class="col-sm badge badge-primary">4 Quartos</span>
-        </div>
-        <div class="col-sm" style="flex-grow: 0;">
-          <span class="col-sm badge badge-primary">Aceita Animais</span>
+        <div class="col-sm" style="flex-grow: 0;" v-for="label in labels" :key="label">
+          <span class="col-sm badge badge-primary">{{label}}</span>
         </div>
       </div>
       <div class="card-body row">
@@ -56,6 +53,18 @@ export default {
     Modal,
     RentModalBody,
   },
+  created() {
+    const cardData = this.$props.cardData;
+
+    const address = cardData["address"];
+    this.title = /rua/i.test(address) ? address : `Rua ${address}`;
+    this.sub = `${cardData["neighborhood"]}, ${cardData["city"]}`;
+    this.price = cardData["rental_price"];
+
+    this.labels.push(`${cardData["rooms"]} quartos`);
+    if(cardData["suites"]) this.labels.push(`${cardData["suites"]} suites`);
+    if(cardData["parking_spaces"]) this.labels.push(`${cardData["parking_spaces"]} vagas`);
+  },
   data: () => {
     return {
       title: "Card title",
@@ -63,6 +72,7 @@ export default {
         "Some quick example text to build on the card title and make up the bulk of the card's content.",
       price: 1000,
       selected: false,
+      labels: []
     };
   },
   props: ["card-data"]
