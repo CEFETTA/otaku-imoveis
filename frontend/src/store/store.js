@@ -36,6 +36,7 @@ export const store = new Vuex.Store({
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
             localStorage.setItem("username", user.name);
+            localStorage.setItem("userid", user.id);
             context.commit("retrieveUser", { token, email: user.email, username: user.name });
 
             resolve(response);

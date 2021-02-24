@@ -58,7 +58,7 @@ export default {
   },
   created() {
     fetchVisits().then((response) => {
-      this.visits = response.data;
+      this.visits = response.data.filter((visit) => visit.user_id == localStorage.getItem("userid"));
     })
   },
   data() {
