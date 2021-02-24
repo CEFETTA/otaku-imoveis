@@ -29,3 +29,5 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
+export const apiRoot = "http://localhost:3333";

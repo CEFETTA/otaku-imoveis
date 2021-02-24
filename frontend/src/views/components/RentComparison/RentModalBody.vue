@@ -54,7 +54,7 @@
             </base-input>
 
             <div class="text-right">
-              <base-button type="primary">Agendar visita</base-button>
+              <base-button type="primary" v-on:click="submitVisit">Agendar visita</base-button>
             </div>
           </div>
         </form>
@@ -66,6 +66,7 @@
 import Modal from "@/components/Modal.vue";
 import "flatpickr/dist/flatpickr.css";
 import FlatPicker from "vue-flatpickr-component";
+import registerVisit from "./js/registerVisit";
 
 export default {
   name: "rent-modal-body",
@@ -97,10 +98,17 @@ export default {
 		};
 	},
 	computed: {
-      backgroundImage () {
-      	return 'background: ' + this.url;
-      },
+		backgroundImage () {
+      		return 'background: ' + this.url;
+    	},
     },
+	methods: {
+		submitVisit() {
+			registerVisit(this.$props.cardData.id, this.dates.simple).then(() => {
+				this.$router.go();
+			})
+		}
+	}
 };
 </script>
 
