@@ -49,6 +49,18 @@
 
               <!-- Force next columns to break to new line at md breakpoint and up -->
               <div
+                v-if="this.formData.filename != 'Escolha uma imagem ...'"
+                class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
+              ></div>
+
+              <div v-if="this.formData.filename != 'Escolha uma imagem ...'" class="px-5 col-sm col-md col-lg col-xl mb-2">
+                <div class="row justify-content-center">
+                  <img id="upload-img" src="" alt="" style="max-width: 246px; max-heigth: 253px; width: auto; heigth: auto;">
+                </div>
+              </div>
+
+              <!-- Force next columns to break to new line at md breakpoint and up -->
+              <div
                 class="w-100 d-none col-sm-block col-md-block col-lg-block d-md-block"
               ></div>
 
@@ -462,6 +474,15 @@ export default {
     uploadImage(evt){
       var self = this;
       this.formData['filename'] = evt.target.files[0].name;
+
+      const file = evt.target.files[0];
+      const fileReader = new FileReader();
+
+      fileReader.onloadend = function(){
+        document.getElementById('upload-img').setAttribute('src', fileReader.result);
+      }
+
+      fileReader.readAsDataURL(file);
     }
   },
 }
