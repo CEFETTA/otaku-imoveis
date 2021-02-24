@@ -15,6 +15,6 @@ export async function performLogin(email, password) {
 }
 
 export function getAuthHeader() {
-  const token = JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
