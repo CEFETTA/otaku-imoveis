@@ -9,7 +9,7 @@
           {{ sub }}
         </p>
       </div>
-      <div class="badge-row row">
+      <div class="pl-2 badge-row row">
         <div class="col-sm" style="flex-grow: 0;" v-for="label in labels" :key="label">
           <span class="col-sm badge badge-primary">{{label}}</span>
         </div>

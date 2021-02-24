@@ -1,7 +1,8 @@
 <template>
   <div class="col m-3">
     <div class="card card-border" style="width: 100%; height=auto;">
-      <img class="card-img-top" style="max-height: 197px;" src="../../../assets/images/logo.svg" alt="" />
+      <img v-if="!rentSubject.filename" class="card-img-top" style="max-height: 197px;" src="../../../assets/images/not-found.svg" alt="" />
+      <img v-if="rentSubject.filename"  style="max-height: 197px;" v-bind:src="`http://localhost:3333/files/${rentSubject.filename}`">
       <div class="card-body">
         <h5 class="card-title">{{ rentSubject.address }}</h5>
         <p class="card-text">
@@ -19,7 +20,7 @@
           <base-button
             block
             type="danger"
-            class=" mb-3"
+            class="mb-3"
             v-on:click="selected = true"
           >
             Cancelar
