@@ -1,4 +1,7 @@
 const express = require("express");
+const multer = require("multer");
+
+const uploadConfig = require("./config/upload");
 
 const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
 
@@ -8,6 +11,8 @@ const NeighborhoodsController = require("./controller/NeighborhoodsController");
 const HousesController = require("./controller/HousesController");
 const ApartmentsController = require("./controller/ApartmentsController");
 const VisitsController = require("./controller/VisitsController");
+
+const upload = multer(uploadConfig.multer);
 
 const routes = express.Router();
 
@@ -37,5 +42,13 @@ routes.delete("/apartments/:apartment_id", ApartmentsController.delete);
 routes.post("/visits", VisitsController.create);
 routes.get("/visits", VisitsController.index);
 routes.delete("/visits/:visit_id", VisitsController.delete);
+
+routes.post(
+  '/upload',
+  upload.single('file'),
+  async (request, response) => {
+    return response.json({ filename: request.file.filename });
+  },
+);
 
 module.exports = routes;

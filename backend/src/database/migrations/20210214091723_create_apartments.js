@@ -3,6 +3,7 @@ exports.up = function(knex) {
   return knex.schema.createTable("apartments", function (table) {
     table.uuid("id").primary();
     table.uuid("user_id").notNullable();
+    table.string("filename");
     table.decimal("rooms").notNullable();
     table.decimal("suites").notNullable();
     table.decimal("living_rooms").notNullable();
