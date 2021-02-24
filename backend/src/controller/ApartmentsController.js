@@ -16,7 +16,11 @@ module.exports = {
         .select("neighborhood")
         .first();
 
-      return { ...apartment, ...neighborhood };
+      return {
+        ...apartment,
+        ...neighborhood,
+        url: `http://localhost:3333/files/${apartment.filename}`
+      };
     }));
 
     return response.json(apartmentsJoin);
@@ -39,11 +43,16 @@ module.exports = {
       .select("neighborhood")
       .first();
 
-    return response.json({ ...apartment, ...neighborhood });
+    return response.json({
+      ...apartment,
+      ...neighborhood,
+      url: `http://localhost:3333/files/${apartment.filename}`,
+    });
   },
 
   async create(request, response) {
     const {
+      filename,
       rooms,
       suites,
       living_rooms,
@@ -81,6 +90,7 @@ module.exports = {
     await connection("apartments").insert({
       id,
       user_id,
+      filename,
       rooms,
       suites,
       living_rooms,
@@ -104,6 +114,7 @@ module.exports = {
 
     return response.json({
       id,
+      filename,
       rooms,
       suites,
       living_rooms,
@@ -124,6 +135,7 @@ module.exports = {
       state,
       cep,
       neighborhood: neighborhood.neighborhood,
+      url: `http://localhost:3333/files/${filename}`,
     });
   },
 

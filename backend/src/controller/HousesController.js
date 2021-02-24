@@ -44,6 +44,7 @@ module.exports = {
 
   async create(request, response) {
     const {
+      filename,
       rooms,
       suites,
       living_rooms,
@@ -77,6 +78,7 @@ module.exports = {
     await connection("houses").insert({
       id,
       user_id,
+      filename,
       rooms,
       suites,
       living_rooms,
