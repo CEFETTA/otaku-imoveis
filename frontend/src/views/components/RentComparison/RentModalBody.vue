@@ -1,21 +1,24 @@
 <template>
-  <div class="row">
+  <div class="row" style="width: 100%; height: 100%;">
 
-    <span class="col img background">
+    <span class="col background">
 				<div class="info">
 						<div class="linha1" style="word-wrap: break-word;">
 								<span>{{cardData.address}}</span>
 								<div>
-									<span style="color: #34a574; white-space:nowrap;">R$ {{cardData.rental_price}}</span>
+									<span class="price">R$ {{cardData.rental_price}}</span>
 								</div>
 						</div>
 						<div class="linha2">
 								<span>{{cardData.neighborhood}}, {{cardData.city}}</span>
 						</div>
+						<span class="linha3">
+								sdfs
+						</span>
 				</div>
 		</span>
 
-    <div class="col-sm" style="padding-right: 0px;">
+    <div class="col-sm" style="margin-right: -30px;">
       <div class="d-block">
         <p class="h4 text-center">Seu próximo dojô está aqui!</p>
       </div>
@@ -109,21 +112,21 @@ export default {
 	.background{
 		background: url('../../../assets/images/ap.jpg');
 		width: 100%;
-		margin: -24px;
-		margin-left: -9px;
-		margin-bottom: -25px;
 		position: relative;
 		background-size: auto 100%;
 		background-repeat: no-repeat;
 		background-position: left top;
 		display: flex;
 		flex-flow: column-reverse;
+		margin: -24px;
+    margin-right: 0;
 	}
 
 	.info{
 		height: fit-content;
 		margin: 10px;
 		margin-left: 0px;
+    margin-right: 0px;
 		border-radius: 6px;
 		background: rgba(255, 255, 255, 0.45);
 		backdrop-filter: blur(20px);
@@ -138,9 +141,23 @@ export default {
 		display: flex;
 		justify-content: space-between;
 	}
+	.price{
+		text-shadow: 0px 4px 7px rgba(0, 0, 0, 0.38);
+		color: #34a574;
+		white-space:nowrap;
+		font-weight: bold;
+	}
 	.linha2 {
 		font-size: 10px;
 		line-height:1;
 		width: 100%;
+	}
+	.linha3 {
+		height:20px;
+		width: 100%;
+		display: inline-block;
+		background: #E8E8E8;
+		margin-top: 5px;
+  	line-height: normal;
 	}
 </style>
