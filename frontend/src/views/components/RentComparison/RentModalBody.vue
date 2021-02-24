@@ -12,9 +12,6 @@
 						<div class="linha2">
 								<span>{{cardData.neighborhood}}, {{cardData.city}}</span>
 						</div>
-						<span class="linha3">
-								sdfs
-						</span>
 				</div>
 		</span>
 
@@ -119,17 +116,17 @@ export default {
 		display: flex;
 		flex-flow: column-reverse;
 		margin: -24px;
-    margin-right: 0;
+    	margin-right: 0;
 	}
 
 	.info{
 		height: fit-content;
 		margin: 10px;
 		margin-left: 0px;
-    margin-right: 0px;
+    	margin-right: 0px;
 		border-radius: 6px;
 		background: rgba(255, 255, 255, 0.45);
-		backdrop-filter: blur(20px);
+		backdrop-filter: blur(7px);
 		padding: 8px;
 		line-height: 50px;
 		border-radius: 6px;
@@ -142,8 +139,8 @@ export default {
 		justify-content: space-between;
 	}
 	.price{
-		text-shadow: 0px 4px 7px rgba(0, 0, 0, 0.38);
-		color: #34a574;
+		text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.38);
+		color: #4FD69C;
 		white-space:nowrap;
 		font-weight: bold;
 	}
@@ -158,6 +155,6 @@ export default {
 		display: inline-block;
 		background: #E8E8E8;
 		margin-top: 5px;
-  	line-height: normal;
+  		line-height: normal;
 	}
 </style>
