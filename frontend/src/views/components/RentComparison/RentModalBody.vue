@@ -44,7 +44,7 @@
                 placeholder="Selecione uma data"
                 @on-open="focus"
                 @on-close="blur"
-                :config="{ allowInput: true, enableTime: true, dateFormat: 'd-m-Y H:i' }"
+                :config="{ allowInput: true, enableTime: true, dateFormat: 'd-m-Y H:i', minDate: new Date(), time_24hr: true,}"
                 class="form-control datepicker"
                 v-model="dates.simple"
               >
