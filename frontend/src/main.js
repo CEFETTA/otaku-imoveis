@@ -30,4 +30,4 @@ new Vue({
   render: (h) => h(App),
 }).$mount("#app");
 
-export const apiRoot = "http://localhost:3333";
+export const apiRoot = `http://localhost:3333`;

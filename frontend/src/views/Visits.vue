@@ -16,9 +16,7 @@
       style="max-width: 100%; heigth: auto;"
     >
       <div class="row row-cols-1 row-cols-md-2 g-4">
-        <visit-card></visit-card>
-        <visit-card></visit-card>
-        <visit-card></visit-card>
+        <visit-card v-for="visit in visits" :key="visit.id" :visit-data="visit" />
       </div>
     </div>
     <!-- Paginação -->
@@ -52,15 +50,21 @@
 
 <script>
 import VisitCard from "./components/VisitComparison/VisitCard";
+import fetchVisits from "./components/VisitComparison/js/fetchVisits"
 
 export default {
   name: "visits",
   components: {
     VisitCard,
   },
+  created() {
+    fetchVisits().then((response) => {
+      this.visits = response.data;
+    })
+  },
   data() {
     return {
-      
+      visits: []
     }
   }
 };
